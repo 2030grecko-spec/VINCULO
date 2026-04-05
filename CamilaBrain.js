@@ -1,4 +1,4 @@
-// ESCALA DE VALORES VÍNCULO (Cerebro de Camila)
+/ ESCALA DE VALORES VÍNCULO (Cerebro de Camila)
 const ESCALA_VALORES = {
     FAMILIA: 250,        // Máximo puntaje por unión familiar
     EDUCACION: 200,      // Conocimiento y academia
