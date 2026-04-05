@@ -1,28 +1,22 @@
-const CAMILA_STATES = {
-  NEUTRAL: { level: 0, color: "#D4AF37", label: "Dorado Premium" },
-  PREOCUPACION: { level: 2, color: "#FFA500", label: "Acompañamiento" },
-  ALERTA_501: { level: 3, color: "#FF4444", label: "Seguridad Inmediata" }
+// ESCALA DE VALORES VÍNCULO (Cerebro de Camila)
+const ESCALA_VALORES = {
+    FAMILIA: 250,        // Máximo puntaje por unión familiar
+    EDUCACION: 200,      // Conocimiento y academia
+    DEPORTE: 150,        // Salud y disciplina
+    RELIGION: 150,       // Fe y valores espirituales
+    CULTURA: 150,        // Identidad y arte
+    COMUNIDAD: 100       // Ayuda y civismo
 };
 
-export const analyzeEmotion = (text) => {
-  const words = text.toLowerCase();
-  if (words.includes("auxilio") || words.includes("peligro") || words.includes("ayuda")) {
-    return CAMILA_STATES.ALERTA_501;
-  }
-  if (words.includes("solo") || words.includes("triste") || words.includes("nadie")) {
-    return CAMILA_STATES.PREOCUPACION;
-  }
-  return CAMILA_STATES.NEUTRAL;
-};
-
-export const camilaShield = (commentLevel) => {
-  return {
-    visible: commentLevel < 2,
-    status: commentLevel >= 2 ? "Celda Invisible" : "Vínculo Humano Protegido"
-  };
-};
-
-export const aplicarVinculo = (puntosActuales) => {
-  return puntosActuales + 10;
-};
-
+// FUNCIÓN PARA CALCULAR EL VALOR TOTAL
+function analizarVideo(v_familia, v_educacion, v_deporte, v_religion, v_cultura, v_comunidad) {
+    let totalPuntos = v_familia + v_educacion + v_deporte + v_religion + v_cultura + v_comunidad;
+    
+    // Si el video supera los 350 puntos, Camila activa el impulso
+    if (totalPuntos >= 350) {
+        console.log("Camila: Contenido de Alto Valor detectado. Activando Válvula.");
+        return { viralidad: true, puntos: totalPuntos };
+    } else {
+        return { viralidad: false, puntos: totalPuntos };
+    }
+}
