@@ -1,10 +1,12 @@
-// Configuración de Conexión Vínculo -> Firebase (ACTUALIZADO)
+// CONFIGURACIÓN DE FIREBASE (A completar con tus credenciales)
 export const firebaseConfig = {
-  apiKey: "AIzaSyBlRRooVLA5QjimOsieIQW9C8juTB8GEO0",
-  authDomain: "vinculo-93704.firebaseapp.com",
-  databaseURL: "https://vinculo-93704-default-rtdb.firebaseio.com",
-  projectId: "vinculo-93704",
-  storageBucket: "vinculo-93704.firebasestorage.app",
-  messagingSenderId: "644260536046",
-  appId: "1:644260536046:web:8087480ad1cfeadd325dff"
+  apiKey: "TU_API_KEY",
+  authDomain: "vinculo-ai.firebaseapp.com",
+  projectId: "vinculo-ai",
+  storageBucket: "vinculo-ai.appspot.com", // Aquí vivirán los links de streaming
 };
+
+// Colecciones clave:
+// 1. /usuarios/{uid} -> { premium: true/false, vCoins: 500 }
+// 2. /videos/{id} -> { url_nube: "...", puntosValor: 850, visible: true }
+// 3. /gala/{semana} -> { nominados: [], votos: {} }
