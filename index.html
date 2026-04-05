@@ -3,27 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vínculo - Camila AI</title>
+    <title>Vínculo - Red Social de Valor</title>
     <style>
         body {
-            background-color: #000;
             margin: 0;
+            background-color: #000;
+            color: #D4AF37;
+            font-family: 'Courier New', Courier, monospace;
             overflow: hidden;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
             height: 100vh;
-            color: #d4af37; /* Dorado */
-            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* Contenedor de Video estilo Vertical (TikTok/YouTube) */
+        #video-feed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: #111;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Capa de Camila (El Octágono) encima del video */
+        #camila-layer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            pointer-events: none; /* Para que no estorbe al tocar el video */
+            transition: all 0.5s ease;
+        }
+
+        /* Bandeja de Votación (Oculta por defecto) */
+        #voting-tray {
+            position: absolute;
+            bottom: -100%; /* Escondida abajo */
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: rgba(0, 0, 0, 0.9);
+            border-top: 2px solid #D4AF37;
+            z-index: 20;
+            transition: bottom 0.5s ease;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #voting-tray.active {
+            bottom: 0; /* Sube la bandeja */
+        }
+
+        .vote-btn {
+            background: none;
+            border: 1px solid #D4AF37;
+            color: #D4AF37;
+            padding: 10px;
+            margin: 5px;
+            width: 80%;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <h1>SISTEMA VÍNCULO</h1>
+
+    <div id="video-feed">
+        <video id="main-player" autoplay loop muted playsinline>
+            <source src="" type="video/mp4">
+        </video>
+    </div>
+
+    <div id="camila-layer">
+        <div id="status">SISTEMA VÍNCULO</div>
+    </div>
+
+    <div id="voting-tray">
+        <h3>¿Quién es el Embajador de Valor?</h3>
+        <div id="options">
+            </div>
+    </div>
 
     <script type="module" src="firebaseConfig.js"></script>
-    <script type="module" src="CamilaBubble.js"></script>
-    <script type="module" src="CamilaVoice.js"></script>
     <script type="module" src="CamilaBrain.js"></script>
+    <script type="module" src="GalaLogic.js"></script>
+
 </body>
 </html>
