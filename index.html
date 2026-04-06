@@ -8,23 +8,74 @@
         body { margin: 0; background: #000; color: #D4AF37; font-family: 'Courier New', monospace; overflow: hidden; height: 100vh; }
         #video-feed { position: absolute; width: 100%; height: 100%; z-index: 1; background: #111; }
         video { width: 100%; height: 100%; object-fit: cover; }
-        #camila-layer { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; pointer-events: none; text-align: center; }
-        .octagon { width: 180px; height: 180px; background: rgba(0,0,0,0.6); clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%); border: 2px solid #D4AF37; display: flex; align-items: center; justify-content: center; animation: pulse 2s infinite; }
+        #camila-layer { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 10; pointer-events: none; text-align: center; }
+        .octagon { width: 150px; height: 150px; background: rgba(0,0,0,0.6); clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%); border: 2px solid #D4AF37; display: flex; align-items: center; justify-content: center; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { box-shadow: 0 0 10px #D4AF37; } 50% { box-shadow: 0 0 25px #FFD700; } 100% { box-shadow: 0 0 10px #D4AF37; } }
+        
+        /* ESTILO DEL SIMULADOR BUSINESS */
+        #business-sim { position: absolute; bottom: 70px; width: 90%; left: 5%; background: rgba(0,0,0,0.85); border: 1px solid #D4AF37; border-radius: 10px; z-index: 25; padding: 10px; font-size: 12px; }
+        .sim-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        input[type=range] { width: 60%; accent-color: #D4AF37; }
+        .prob-box { text-align: center; border-top: 1px solid #444; padding-top: 5px; margin-top: 5px; }
+        .big-prob { font-size: 18px; font-weight: bold; color: #00ffcc; }
+
         #voting-tray { position: absolute; bottom: -100%; width: 100%; height: 40%; background: rgba(0,0,0,0.95); border-top: 2px solid #D4AF37; z-index: 20; transition: 0.5s; padding: 20px; text-align: center; }
         #voting-tray.active { bottom: 0; }
         .nav-bar { position: absolute; bottom: 0; width: 100%; height: 60px; display: flex; justify-content: space-around; background: rgba(0,0,0,0.8); z-index: 30; }
-        .nav-item { color: #D4AF37; font-size: 10px; padding: 10px; }
+        .nav-item { color: #D4AF37; font-size: 10px; padding: 10px; text-align: center; }
     </style>
 </head>
 <body>
-    <div id="video-feed"><video id="main-player" autoplay loop muted playsinline><source src="" type="video/mp4"></video></div>
-    <div id="camila-layer"><div class="octagon"><h2>AI</h2></div><div id="status">SISTEMA VÍNCULO</div></div>
-    <div id="voting-tray"><h3>Gala de Valores: ¡Vota!</h3><div id="options"></div></div>
-    <div class="nav-bar">
-        <div class="nav-item">INICIO</div><div class="nav-item">VALOR</div><div class="nav-item">ACADEMIA (8va)</div>
+    <div id="video-feed">
+        <video id="main-player" autoplay loop muted playsinline><source src="" type="video/mp4"></video>
     </div>
+
+    <div id="camila-layer">
+        <div class="octagon"><h2>IA</h2></div>
+        <div id="status">SISTEMA VÍNCULO</div>
+        <p id="camila-feedback" style="font-size: 10px; margin-top: 10px; background: rgba(0,0,0,0.5);">"Listo para analizar..."</p>
+    </div>
+
+    <div id="business-sim">
+        <div class="sim-row">
+            <span>Valor ADN:</span>
+            <input type="range" id="sim-valor" min="0" max="1000" value="0" oninput="actualizarBusiness()">
+        </div>
+        <div class="sim-row">
+            <span>Retención:</span>
+            <input type="range" id="sim-ret" min="0" max="100" value="0" oninput="actualizarBusiness()">
+        </div>
+        <div class="prob-box">
+            <span>Probabilidad Viral: <span id="prob-val" class="big-prob">0%</span></span>
+        </div>
+    </div>
+
+    <div id="voting-tray"><h3>Gala de Valores: ¡Vota!</h3><div id="options"></div></div>
+
+    <div class="nav-bar">
+        <div class="nav-item">INICIO</div>
+        <div class="nav-item" onclick="document.getElementById('videoInput').click()">SUBIR</div>
+        <div class="nav-item">VALOR</div>
+        <div class="nav-item">ACADEMIA (8va)</div>
+    </div>
+
+    <input type="file" id="videoInput" accept="video/*" hidden>
+
     <script type="module" src="firebaseConfig.js"></script>
     <script type="module" src="CamilaBrain.js"></script>
+    <script type="module" src="Camila-logic.js"></script>
+    <script>
+        // Lógica rápida para que el simulador se mueva
+        function actualizarBusiness() {
+            const v = document.getElementById('sim-valor').value;
+            const r = document.getElementById('sim-ret').value;
+            const prob = Math.round(((v * 0.5) + (r * 5)) / 10);
+            document.getElementById('prob-val').innerText = prob + "%";
+            
+            const feedback = document.getElementById('camila-feedback');
+            if(prob > 70) feedback.innerText = '"Este contenido tiene el ADN del éxito."';
+            else feedback.innerText = '"Necesitamos más valor ético para subir."';
+        }
+    </script>
 </body>
 </html>
