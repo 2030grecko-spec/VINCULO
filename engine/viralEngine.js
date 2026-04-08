@@ -1,22 +1,23 @@
-export function calcularViralidad(video, usuario) {
+/**
+ * @project VÍNCULO AI - Red Social de Valores
+ * @author Jose Gregorio Luces Muñoz (Greco)
+ * @license Private / Proprietary
+ * @file engine/viralEngine.js
+ */
 
-  let score =
-    (video.valor || 0) +
-    (video.likes * 0.2) +
-    (video.shares * 0.5);
+export function calcularImpacto(data) {
+    // Tu lógica de los 1000 puntos
+    let pts = data.valor || 0;
+    const umbral = 350;
 
-  if (video.watchTime > 0.8) score += 20;
+    // Si el video tiene valores de familia o academia, sube el score
+    if (data.categoria === 'Familia' || data.categoria === 'Academia') {
+        pts += 150;
+    }
 
-  let boost = 1;
-
-  if (score > 200) boost = 1.9;
-  else if (score > 150) boost = 1.7;
-  else if (score > 100) boost = 1.5;
-
-  if (usuario.tipo === "Business") boost *= 2;
-
-  return {
-    score,
-    prob: Math.min(Math.round(boost * 50), 95)
-  };
+    return {
+        score total: Math.min(pts, 1000),
+        esViralizable: pts >= umbral,
+        impulsoHabilitado: pts > 800
+    };
 }
