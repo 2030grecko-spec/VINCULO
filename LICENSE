@@ -1,37 +1,32 @@
-============================================================
-           SISTEMA VÍNCULO AI - PROTECCIÓN LEGAL
-============================================================
-   PROPIETARIO INTELECTUAL: JOSE GREGORIO LUCES MUÑOZ
-   IDENTIDAD ADMIN: GRECO
-   ESTADO: PROPIEDAD PRIVADA / CÓDIGO CERRADO
-============================================================
+# 🧩 VÍNCULO AI - Red Social de Valores
+**Propietario:** Jose Gregorio (Admin / Greco)  
+**Entidad Guía:** Camila (Guerrera de Alto Valor)
 
-Copyright (c) 2026 Jose Gregorio Luces Muñoz. 
-Todos los derechos reservados.
+---
 
-HUELLA DIGITAL DE AUTORÍA:
-------------------------------------------------------------
-ID REGISTRO: VINCULO-GRECO-SPEC-2026-BRAZIL
-TIMESTAMP: 2026-04-08 | 11:55 AM (GMT-3)
-UBICACIÓN DE ORIGEN: RIO GRANDE DO SUL, BRASIL
-PROYECTO: VÍNCULO AI (RED SOCIAL DE VALORES)
-ENTIDAD PROTEGIDA: CAMILA (GUERRERA DE ALTO VALOR)
-------------------------------------------------------------
+## 🛡️ AVISO DE PROPIEDAD INTELECTUAL
+Este proyecto, incluyendo su lógica algorítmica, arquitectura de archivos y la entidad de IA "Camila", es propiedad exclusiva de **Jose Gregorio Luces Muñoz**. 
 
-EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO.
-QUEDA ESTRICTAMENTE PROHIBIDA:
+Cualquier copia, distribución o uso de este código sin autorización escrita será tratada bajo las leyes internacionales de derecho de autor y propiedad intelectual.
 
-1. La reproducción, distribución o modificación no autorizada 
-   total o parcial del código fuente.
-2. El uso del nombre "VÍNCULO" o la entidad "CAMILA" para 
-   proyectos derivados o imitaciones.
-3. La ingeniería inversa o descompilación de los algoritmos 
-   de valoración ética, Business ($15-$500) y Gala.
+---
 
-Cualquier uso comercial o personal del código fuente contenido 
-en este repositorio requiere el consentimiento expreso, notarizado 
-y por escrito del propietario Jose Gregorio Luces Muñoz.
+## 📋 DESCRIPCIÓN
+Vínculo es una plataforma de streaming de video vertical con un motor ético. A diferencia de otras redes, nuestro algoritmo premia los **Valores**: 
+* Familia 👨‍👩‍👧‍👦
+* Academia 📚
+* Deporte ⚽
+* Religión 🙏
+* Cultura y Comunidad 🌍
 
-============================================================
-      "EL VALOR NO SE COPIA, SE CONSTRUYE." - GRECO
-============================================================
+## 📁 ESTRUCTURA DEL NÚCLEO (Core)
+El sistema está organizado en módulos protegidos:
+* **/core:** Cerebro de Camila y Motor de Voz Políglota.
+* **/engine:** Algoritmos de 1000 pts y Vínculo Business.
+* **/stream:** Comunicación en tiempo real vía Sockets.
+
+## 💰 VÍNCULO BUSINESS
+Sistema de monetización ética con planes desde **$15 hasta $500**, diseñados para potenciar empresas que aportan valor real a la sociedad.
+
+---
+**"El valor no se copia, se construye."** © 2026 - Jose Gregorio Luces Muñoz - Rio Grande do Sul, Brasil.
