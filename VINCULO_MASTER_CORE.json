@@ -1,0 +1,47 @@
+{
+  "project": "VÍNCULO AI",
+  "architect": "Jose Gregorio Luces Muñoz (Greco)",
+  "digital_fingerprint": "JGLM-VINCULO-2026-BRAZIL-ROOT",
+  "status": "MASTER_PLAN_LOCKED",
+  
+  "interface_anatomy": {
+    "v_anchor": "V de Vínculo estilizada en base inferior con iconos en esquinas.",
+    "split_screen": "50/50 Dinámico (Amanecer / Azul / Video).",
+    "camila_entity": {
+      "hosting": "Cloud-Based (Nube)",
+      "render": "Por capas (Ojos, Pestañas, Boca, Rostro, Cuerpo)",
+      "states": ["Full_Body (Educación)", "Half_Body (Interacción)", "Close_Up (Atención/Seriedad)"]
+    },
+    "vault": {
+      "visual": "Corazón Anatómico 3D con foto interna",
+      "animation": "Bucle eterno de 3 latidos (Vitalidad)",
+      "cleanup": "72h (Bajo valor) / 6 meses (No viral)"
+    }
+  },
+
+  "logic_engines": {
+    "viral_scale": {
+      "threshold_35": "10% boost",
+      "threshold_50": "15% boost",
+      "threshold_68": "20% boost",
+      "threshold_80": "50% boost",
+      "threshold_93": "X4 Multiplier (Premio Mayor)"
+    },
+    "camila_business": {
+      "tone": "Tajante / Directo / Profesional",
+      "features": ["Auditoría de video en tiempo real", "Incubadora de negocios desde $10", "Puente Venezuela (Pagos Especiales)"],
+      "ui": "Teclado Negro + Letras Oro (Sin efectos Matrix)"
+    },
+    "interaction_fx": {
+      "typing": "Letras verdes verticales desde teclado",
+      "arrival": "Transformación a Oro Fundido al aterrizar",
+      "notification": "Efecto Arcoíris de partículas (Campanita PAO)"
+    }
+  },
+
+  "camila_show_protocol": {
+    "thursday_20h": "Nominados (Top 5/10 Valores)",
+    "friday_16h": "Cierre de Urnas",
+    "friday_20h": "Gran Gala (Anuncio Global / Cuadruplicar Vistas)"
+  }
+}
