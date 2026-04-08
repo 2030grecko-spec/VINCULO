@@ -3,38 +3,41 @@
  * @author Jose Gregorio Luces Muñoz (Greco)
  * @license Private / Proprietary
  * @file stream/socketClient.js
- * @description Sistema de comunicación en tiempo real (Vínculo Stream).
+ * @timestamp 2026-04-08
+ * @description Sistema de comunicación en tiempo real. Prohibida su copia.
  */
 
-// Conexión al servidor de Vínculo
-// NOTA: Cambiar 'localhost' por la URL de Railway al desplegar.
+// Canal de comunicación Vínculo
+// Nota: localhost se cambiará por la URL de producción en Railway
 export const socket = new WebSocket("ws://localhost:3000");
 
 /**
- * Envía datos cifrados al servidor (Puntos, Impulsos, Business)
+ * @function enviar
+ * @description Envía datos de usuario e impulsos al servidor central.
  */
 export function enviar(data) {
   if (socket.readyState === WebSocket.OPEN) {
     socket.send(JSON.stringify(data));
   } else {
-    console.error("Error: El canal de Vínculo no está abierto.");
+    console.warn("Vínculo Offline: Intentando reconectar con el servidor...");
   }
 }
 
 /**
- * Escucha las órdenes de Camila que vienen de la nube
+ * @function recibir
+ * @description Captura las respuestas del algoritmo y las órdenes de Camila.
  */
 export function recibir(callback) {
   socket.onmessage = (event) => {
     try {
-      const mensaje = JSON.parse(event.data);
-      callback(mensaje);
-    } catch (error) {
-      console.error("Error al procesar respuesta del servidor:", error);
+      const data = JSON.parse(event.data);
+      callback(data);
+    } catch (e) {
+      console.error("Error en flujo de datos Vínculo:", e);
     }
   };
 }
 
-/** * PROTECCIÓN LEGAL GRECO 2026 
- * El monitoreo de este canal es exclusivo del administrador.
+/** * PROPIEDAD INTELECTUAL DE JOSE GREGORIO LUCES MUÑOZ
+ * Este código forma parte del núcleo de transmisión de Vínculo AI.
  */
