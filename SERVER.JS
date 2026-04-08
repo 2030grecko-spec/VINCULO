@@ -1,37 +1,11 @@
-import express from "express";
-import { WebSocketServer } from "ws";
-
-const app = express();
-const server = app.listen(3000, () => {
-  console.log("Servidor corriendo en puerto 3000");
-});
-
-const wss = new WebSocketServer({ server });
-
-wss.on("connection", (ws) => {
-
-  ws.on("message", (msg) => {
-
-    const data = JSON.parse(msg);
-
-    let respuesta = "";
-
-    if (data.type === "analizar") {
-
-      if (data.valor > 800) {
-        respuesta = "Este contenido puede explotar.";
-      } else if (data.retencion < 40) {
-        respuesta = "Debes mejorar el inicio.";
-      } else {
-        respuesta = "Vas bien, sigue ajustando.";
-      }
-
-      ws.send(JSON.stringify({
-        type: "camila",
-        text: respuesta
-      }));
-    }
-
-  });
-
-});
+/**
+ * @project VÍNCULO AI - Red Social de Valores
+ * @author Jose Gregorio Luces Muñoz (Greco)
+ * @license Private / Proprietary
+ */
+// Configuración de servidor para Railway/Cloud
+const VINCULO_CONFIG = {
+    port: process.env.PORT || 3000,
+    security: "Private-Protocol-V1"
+};
+console.log("Servidor Vínculo Protegido Iniciado.");
