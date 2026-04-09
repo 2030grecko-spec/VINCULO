@@ -1,0 +1,32 @@
+// VÍNCULO AI - MOTOR DE IMPULSO Y DISEÑO ÉTICO
+// Arquitecto: Jose Gregorio Luces Muñoz (Greco)
+
+export const FairPlayEngine = {
+    // 1. REGLAS DE ORO (INNEGOCIABLES)
+    reglas: {
+        pagoGarantizaViralidad: false, // ¡NUNCA!
+        pagoMejoraEstetica: true,     // El Engine es para quien lo paga
+        techoVistasImpulsadas: 5000,   // Límite para no ser injustos
+        accesoGalaPorPago: false      // Solo entran por mérito de valores
+    },
+
+    // 2. LÓGICA DE IMPULSO (EL 50% QUE DIJISTE)
+    aplicarImpulso(videoData, montoPagado) {
+        if (montoPagado > 0 && !videoData.esContenidoBasura) {
+            const boost = videoData.vistasBase * 0.50; // El 50% extra
+            const vistasFinales = videoData.vistasBase + boost;
+            
+            // Si el video llega al techo, Camila detiene el motor
+            return Math.min(vistasFinales, this.reglas.techoVistasImpulsadas);
+        }
+        return videoData.vistasBase;
+    },
+
+    // 3. MENSAJE DE CAMILA (ALERTA DE ÉTICA)
+    notificarUsuario(status) {
+        if (status === "LIMITE_ALCANZADO") {
+            const msj = "Has alcanzado el máximo impulso pagado. De aquí en adelante, la viralidad depende de la conexión de tu mensaje con los valores de Vínculo.";
+            VoiceEngine.hablar(msj, 'es-ES');
+        }
+    }
+};
