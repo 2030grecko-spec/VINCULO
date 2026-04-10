@@ -1,9 +1,8 @@
-
 /**
  * @project VÍNCULO AI - Red Social de Valores
  * @author Jose Gregorio Luces Muñoz (Greco)
  * @license Private / Proprietary
- * @timestamp 2026-04-08
+ * @timestamp 2026-04-10
  */
 <!DOCTYPE html>
 <html lang="es">
@@ -25,7 +24,9 @@
             <div id="camila-avatar"></div>
         </div>
         <div id="status">SISTEMA VÍNCULO</div>
-        <p id="camila-feedback">"Analizando el ADN del video..."</p>
+        <div id="chat" style="color: #FFD700; font-weight: bold; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 10px;">
+            <p id="camila-feedback">"Analizando el ADN del video..."</p>
+        </div>
     </div>
 
     <div class="right-controls">
@@ -33,6 +34,12 @@
         <button id="btn-impulso" class="btn-main">⚡</button>
         <button id="btn-comentarios" class="btn-main">💬</button>
         <button id="btn-vincular" class="btn-main">❤️</button>
+        <button id="btn-micro" class="btn-main" onclick="iniciarVoz()" style="background: #FFD700; color: black; margin-top: 10px;">🎙️</button>
+    </div>
+
+    <div class="input-area" style="position: fixed; bottom: 80px; width: 100%; display: flex; padding: 10px; box-sizing: border-box;">
+        <input id="input" type="text" placeholder="Orden para Camila..." style="flex: 1; padding: 15px; background: #222; color: white; border: 1px solid #FFD700; border-radius: 5px;">
+        <button onclick="enviarMensaje()" style="background: #FFD700; padding: 15px; border: none; font-weight: bold;">ENVIAR</button>
     </div>
 
     <nav class="nav-bar">
@@ -41,6 +48,6 @@
         <div class="nav-item" id="btn-boveda">BÓVEDA</div>
     </nav>
 
-    <script src="app.js" type="module"></script>
+    <script src="app.js"></script>
 </body>
 </html>
