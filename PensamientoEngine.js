@@ -1,20 +1,27 @@
 /**
  * @project VÍNCULO AI - MOTOR DE PENSAMIENTO
  * @author Jose Gregorio Luces Muñoz (Greco)
+ * @license Private / Proprietary
+ * @huella JGLM-VINCULO-2026-BRAZIL-ROOT
  */
 
-export const PensamientoModule = {
+export const PensamientoEngine = {
     constraints: {
-        max_characters: 50,
-        max_duration_media: 50, // Segundos para video y voz de Camila
-        behavior: "Always_On_Top_Glass_Blur"
+        max_characters: 50,         // Texto corto y directo
+        max_video_duration: 30,     // TU ORDEN: 30 segundos (Ni uno más)
+        allowed_media: ["image", "video_short"],
+        ui_behavior: "Always_On_Top_Glass_Blur"
     },
 
+    // Lógica del flujo visual (Ergonomía para tu vista)
     onPublish: (content) => {
         return {
-            trajectory: "Upwards_to_Cloud",
-            transformation: "Green_to_Gold_Mate", // Oro mate para la vista
-            targetPanel: "Right_Opinion_Panel"
+            animation: "Vertical_Ascension",
+            transformation: {
+                start: "Matrix_Green",
+                end: "Gold_Mate_JGLM", // Oro mate para no cansar la vista
+                target: "Right_Panel_Amanecer" // Panel a la derecha
+            }
         };
     }
 };
