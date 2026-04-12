@@ -1,61 +1,46 @@
 :root { 
-    --oro: #D4AF37; 
-    --negro: #000; 
-    --oro-mate: #B8860B; 
-    --rojo-alerta: #8B0000;
+    --oro: #D4AF37; --negro: #000; --oro-mate: #B8860B; --rojo-alerta: #8B0000;
 }
 
 body { 
-    background: var(--negro); 
-    color: var(--oro); 
-    font-family: 'Courier New', monospace; 
-    margin: 0; 
+    background: var(--negro); color: var(--oro); font-family: 'Courier New', monospace; margin: 0; overflow: hidden;
 }
 
-/* EFECTO CAMILA VIVA */
+/* CAMILA BASE */
 #camila-layer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    pointer-events: none; 
-    z-index: 1;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; justify-content: center; align-items: flex-end;
+    pointer-events: none; z-index: 1;
 }
 
 #camila-img {
-    height: 95%;
-    object-fit: contain;
-    opacity: 0.18;
+    height: 95%; object-fit: contain; opacity: 0.15;
+    transition: all 0.5s ease; /* Para que el cambio de escala sea suave */
     animation: camilaBreath 6s ease-in-out infinite;
 }
 
+/* TU NUEVA RESPIRACIÓN */
 @keyframes camilaBreath {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
+    0%   { transform: scale(1) translateY(0px); }
+    50%  { transform: scale(1.015) translateY(-3px); }
+    100% { transform: scale(1) translateY(0px); }
 }
 
-/* INTERFAZ DE CANDADO */
+/* TU NUEVO CANDADO VB */
 .lock-overlay {
-    position: relative;
-    display: inline-block;
+    position: fixed; bottom: 30px; right: 20px; z-index: 5;
+}
+
+.lock-overlay button {
+    background: transparent; color: var(--oro); border: 1px solid var(--oro);
+    padding: 10px 14px; border-radius: 8px; backdrop-filter: blur(4px);
+    cursor: pointer;
 }
 
 .icon-lock {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    font-size: 12px;
-    background: var(--rojo-alerta);
-    color: white;
-    padding: 2px 5px;
-    border-radius: 4px;
-    border: 1px solid var(--oro);
+    position: absolute; top: -8px; right: -8px; font-size: 11px;
+    background: var(--rojo-alerta); color: white; padding: 3px 6px;
+    border-radius: 6px; border: 1px solid var(--oro);
 }
 
-/* ORDEN DE CAPAS */
 #canvas-container { position: relative; z-index: 2; }
-#camila-ui-root { position: relative; z-index: 3; padding: 20px; }
