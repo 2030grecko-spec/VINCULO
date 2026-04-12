@@ -1,53 +1,81 @@
 /* ARCHIVO: engine/CamilaShowEngine.js 
-   LÓGICA: SHOW CON COMPORTAMIENTO INTELIGENTE JGLM
+   LÓGICA: SISTEMA NERVIOSO CERRADO JGLM-ROOT-2026
 */
 import { DesignEngine } from './CamilaDesignEngine.js';
 
 export const CamilaShow = {
     camilaActiva: false,
+    usuarioActivo: 0, // Capa 5: Memoria simple
 
-    // LÓGICA DE DETECCIÓN DE SENTIMIENTOS
+    // CAPA 1: DETECCIÓN MEJORADA
     analizarMensaje(texto) {
         const t = texto.toLowerCase();
-        
-        if (t.includes("ayuda") || t.includes("problema") || t.includes("odio")) {
-            return "ALERTA"; // Reacción seria
-        }
-        if (t.includes("camila") || t.includes("vincule") || t.includes("gracias")) {
-            return "IMPORTANTE"; // Reacción profunda
-        }
+        if (t.length < 3) return "SILENCIO"; // Capa 1: Filtro de ruido
+        if (t.includes("ayuda") || t.includes("problema") || t.includes("odio")) return "ALERTA";
+        if (t.includes("camila") || t.includes("gracias") || t.includes("vincule")) return "IMPORTANTE";
         return "NORMAL";
     },
 
-    reaccionar(tipo) {
-        if (this.camilaActiva) return;
-        this.camilaActiva = true;
-
-        if (tipo === "ALERTA") {
-            // Se acerca mucho y se queda fija (Modo Serio)
-            DesignEngine.camilaHabla(); 
-            setTimeout(() => { DesignEngine.camilaNormal(); this.camilaActiva = false; }, 4000);
-        } else if (tipo === "IMPORTANTE") {
-            // Reacción cálida
-            DesignEngine.camilaHabla();
-            setTimeout(() => { DesignEngine.camilaNormal(); this.camilaActiva = false; }, 2500);
-        } else {
-            // Reacción rápida
-            DesignEngine.camilaHabla();
-            setTimeout(() => { DesignEngine.camilaNormal(); this.camilaActiva = false; }, 1000);
+    // CAPA 2: DECISIÓN
+    puedeReaccionar(tipo) {
+        if (this.camilaActiva) {
+            return tipo === "ALERTA"; // Solo interrumpe si es urgente
         }
+        return tipo !== "SILENCIO";
+    },
+
+    // CAPA 3: COMPORTAMIENTO (ACTUAR)
+    reaccionar(tipo) {
+        this.camilaActiva = true;
+        this.usuarioActivo++; // Sumamos a la memoria
+
+        let duracion = 1000;
+        DesignEngine.camilaHabla(); // Ella se acerca
+
+        if (tipo === "ALERTA") duracion = 4000;
+        else if (tipo === "IMPORTANTE") duracion = 2500;
+        else duracion = 800;
+
+        setTimeout(() => {
+            DesignEngine.camilaNormal();
+            this.camilaActiva = false;
+        }, duracion);
+    },
+
+    // CAPA 4: RESPUESTA
+    responder(tipo) {
+        if (this.usuarioActivo > 10) return "Noto que estás muy activo hoy. Te escucho.";
+        if (tipo === "ALERTA") return "Estoy contigo. ¿Qué sucede?";
+        if (tipo === "IMPORTANTE") return "Te presto atención.";
+        return null;
     },
 
     mostrarMensaje(texto) {
         const chat = document.getElementById("live-chat");
+        const tipo = this.analizarMensaje(texto);
+
+        // Si la decisión es no reaccionar, solo mostramos el texto y salimos
+        if (!this.puedeReaccionar(tipo)) {
+            this.inyectarTexto(chat, texto);
+            return;
+        }
+
+        // Si pasa el filtro, ella actúa y responde
+        this.inyectarTexto(chat, texto);
+        this.reaccionar(tipo);
+
+        const respuesta = this.responder(tipo);
+        if (respuesta) {
+            setTimeout(() => this.inyectarTexto(chat, "Camila: " + respuesta, true), 1000);
+        }
+    },
+
+    inyectarTexto(contenedor, texto, esCamila = false) {
         const msg = document.createElement("div");
         msg.className = "chat-msg";
+        if (esCamila) msg.style.borderLeft = "2px solid #fff"; // Diferenciar respuesta de Camila
         msg.innerText = texto;
-        chat.appendChild(msg);
-        
-        const sentimiento = this.analizarMensaje(texto);
-        this.reaccionar(sentimiento);
-
+        contenedor.appendChild(msg);
         setTimeout(() => msg.remove(), 6000);
     }
 };
