@@ -1,46 +1,26 @@
-:root { 
-    --oro: #D4AF37; --negro: #000; --oro-mate: #B8860B; --rojo-alerta: #8B0000;
-}
-
-body { 
-    background: var(--negro); color: var(--oro); font-family: 'Courier New', monospace; margin: 0; overflow: hidden;
-}
+:root { --oro: #D4AF37; --negro: #000; --rojo-alerta: #8B0000; }
+body { background: var(--negro); color: var(--oro); font-family: 'Courier New', monospace; margin: 0; overflow: hidden; }
 
 /* CAMILA BASE */
-#camila-layer {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    display: flex; justify-content: center; align-items: flex-end;
-    pointer-events: none; z-index: 1;
-}
+#camila-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; z-index: 1; }
+#camila-img { height: 95%; object-fit: contain; opacity: 0.15; transition: all 0.6s ease-in-out; animation: camilaBreath 6s ease-in-out infinite; }
 
-#camila-img {
-    height: 95%; object-fit: contain; opacity: 0.15;
-    transition: all 0.5s ease; /* Para que el cambio de escala sea suave */
-    animation: camilaBreath 6s ease-in-out infinite;
-}
-
-/* TU NUEVA RESPIRACIÓN */
 @keyframes camilaBreath {
-    0%   { transform: scale(1) translateY(0px); }
-    50%  { transform: scale(1.015) translateY(-3px); }
-    100% { transform: scale(1) translateY(0px); }
+    0%, 100% { transform: scale(1) translateY(0px); }
+    50% { transform: scale(1.015) translateY(-3px); }
 }
 
-/* TU NUEVO CANDADO VB */
-.lock-overlay {
-    position: fixed; bottom: 30px; right: 20px; z-index: 5;
+/* CHAT EN VIVO */
+#live-chat { position: absolute; bottom: 100px; left: 15px; width: 80%; display: flex; flex-direction: column; gap: 8px; z-index: 11; }
+.chat-msg { background: rgba(0,0,0,0.7); color: var(--oro); padding: 8px 12px; border-radius: 12px; font-size: 13px; border-left: 2px solid var(--oro); animation: subir 6s forwards; }
+
+@keyframes subir {
+    0% { transform: translateY(20px); opacity: 0; }
+    10% { opacity: 1; transform: translateY(0); }
+    100% { transform: translateY(-150px); opacity: 0; }
 }
 
-.lock-overlay button {
-    background: transparent; color: var(--oro); border: 1px solid var(--oro);
-    padding: 10px 14px; border-radius: 8px; backdrop-filter: blur(4px);
-    cursor: pointer;
-}
-
-.icon-lock {
-    position: absolute; top: -8px; right: -8px; font-size: 11px;
-    background: var(--rojo-alerta); color: white; padding: 3px 6px;
-    border-radius: 6px; border: 1px solid var(--oro);
-}
-
-#canvas-container { position: relative; z-index: 2; }
+/* BOTÓN VB CON CANDADO */
+.lock-overlay { position: fixed; bottom: 30px; right: 20px; z-index: 15; }
+.lock-overlay button { background: transparent; color: var(--oro); border: 1px solid var(--oro); padding: 10px 14px; border-radius: 8px; backdrop-filter: blur(4px); }
+.icon-lock { position: absolute; top: -8px; right: -8px; font-size: 11px; background: var(--rojo-alerta); color: white; padding: 3px 6px; border-radius: 6px; border: 1px solid var(--oro); }
