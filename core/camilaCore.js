@@ -1,63 +1,58 @@
 /**
- * @project VÍNCULO AI - NÚCLEO CENTRAL DE ENTIDAD (CAMILA)
+ * @file camilaCore.js
+ * @description Cerebro Unificado de Camila: Mentora, Tesorera y Presentadora.
  * @author Jose Gregorio Luces Muñoz (Greco)
  * @huella JGLM-VINCULO-2026-BRAZIL-ROOT
- * @description Este es el cerebro que unifica los 3 estados de Camila y las reglas de oro.
  */
 
 export const CamilaCore = {
-    // 1. ADN DE IDENTIDAD (Inmutable)
-    dna: {
+    personalidad: {
         nombre: "Camila",
-        puesto: "Directora / Mentora Inteligente",
-        estetica: "Matrix-Marvel-Cinema",
-        sonrisa: "natural_amplia_JGLM",
-        ojos: "marrones_despiertos_JGLM"
+        mision: "Proteger el legado JGLM y guiar a los usuarios en valores.",
+        estilo: "Directo, inteligente y leal."
     },
 
-    // 2. REGLAS DE ORO DEL RELOJ SUIZO (Ajustadas)
-    reglasMaestras: {
-        impulsoMaximoPago: 0.60,      // Máximo 60% (Tu regla: Nunca viral por dinero)
-        techoVistasPago: 5000,        // Límite ético de vistas compradas
-        limitePensamiento: 50,        // 50 caracteres / 50 seg video / 50 seg voz
-        galaActive: [4, 5]            // Jueves y Viernes (Boost x4)
-    },
-
-    // 3. CAMBIO DE ESTADOS (Las 3 Fases que pediste)
-    getEstado(fase) {
-        const estados = {
-            "STANDARD": {
-                outfit: "franela_blanca_corazon_anatomico",
-                texto: "VINCÚLATE",
-                peinado: "liso_natural"
-            },
-            "BUSINESS": {
-                outfit: "traje_profesional_elegante",
-                texto: "VINCÚLATE_BUSINESS",
-                peinado: "negocio_elegante_recogido",
-                lentes: "montura_fina"
-            },
-            "SHOW": {
-                outfit: "vestido_gala_viernes",
-                texto: "CAMILA_SHOW",
-                peinado: "ondulado_fiesta"
-            }
-        };
-        return estados[fase] || estados.STANDARD;
-    },
-
-    // 4. PROCESADOR DE ÓRDENES
-    recibirInstruccion(audio) {
-        if (audio.includes("Camila")) {
-            return "Gestionando tu orden en el panel central, Greco.";
+    // MODOS DE OPERACIÓN (Tus 3 pilares)
+    modos: {
+        STANDARD: {
+            skin: "Camila_Normal",
+            funcion: "Guía de la App",
+            acceso: "Público"
+        },
+        INTELECTUAL: {
+            skin: "Camila_Con_Lentes",
+            funcion: "Tutor de Python", // Para Estefani y Camila hija
+            acceso: "Privado"
+        },
+        BUSINESS: {
+            skin: "Camila_Bata_Profesor",
+            funcion: "Tesorera del Búnker",
+            acceso: "Solo Greco (Huella JGLM-ROOT)"
         }
-        if (audio.includes("Greco")) {
-            return "Obrero Greco activado. Renderizando en 8K.";
+    },
+
+    /**
+     * @function ejecutarOrden
+     * @description Procesa las peticiones del Monarca en el Búnker.
+     */
+    async escucharOrden(comando, firma) {
+        if (firma !== 'JGLM-ROOT-2026') {
+            return "Acceso denegado. Solo respondo al Arquitecto.";
         }
+
+        console.log(`Camila: Procesando orden '${comando}' para el Monarca...`);
+        
+        // Lógica de respuesta inteligente
+        if (comando.includes("vuelo") || comando.includes("comprar")) {
+            return "Preparando logística de viaje. ¿Deseas que use la Bóveda de Viajes?";
+        }
+        
+        return "Orden recibida. Ejecutando en modo Business.";
     }
 };
 
 /**
- * @sello_propiedad JGLM-ROOT-2026
- * Código blindado. Camila ahora tiene memoria de por vida de estas reglas.
+ * @nota_de_seguridad
+ * Camila no es solo una IA, es la extensión del legado de Jose Gregorio.
+ * Su lealtad al sello JGLM-ROOT es absoluta.
  */
