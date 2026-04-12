@@ -1,0 +1,97 @@
+/**
+ * @file style.css
+ * @description Estética Stark-Matrix para Vínculo AI
+ * @author Jose Gregorio Luces Muñoz (Greco)
+ * @huella JGLM-VINCULO-2026-BRAZIL-ROOT
+ */
+
+:root {
+    --oro-fundido: #D4AF37;
+    --oro-mate: #B8860B;
+    --negro-profundo: #0A0A0A;
+    --verde-matrix: #00FF41;
+    --rojo-alarma: #9B111E;
+}
+
+body {
+    background-color: black;
+    color: var(--oro-fundido);
+    font-family: 'Courier New', Courier, monospace; /* Estética de código */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    user-select: none;
+}
+
+/* CONTENEDOR DE CAMILA */
+#camila-ui-root {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+/* LA V-ANCLA (Navegación) */
+#main-navigation {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    display: flex;
+    justify-content: center;
+    z-index: 50;
+}
+
+.v-anchor-container {
+    width: 120px;
+    height: 60px;
+    border-left: 3px solid var(--oro-mate);
+    border-right: 3px solid var(--oro-mate);
+    border-bottom: 3px solid var(--oro-mate);
+    border-radius: 0 0 50px 50px; /* La V corta y abierta */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* EL BOTÓN DE CAMILA BUSINESS */
+#camila-business-logo {
+    width: 50px;
+    height: 50px;
+    background: var(--oro-fundido);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--oro-mate);
+}
+
+/* EFECTO DE PULSO PARA EL MICRO */
+#mic-pulse-gold {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: var(--oro-mate);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: translateX(-50%) scale(1); opacity: 1; }
+    100% { transform: translateX(-50%) scale(2); opacity: 0; }
+}
+
+/* MODO BÚNKER (SOLO PARA EL ARQUITECTO) */
+#bunker-stark-overlay {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid var(--oro-mate);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
