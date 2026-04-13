@@ -1,9 +1,11 @@
 /* ARCHIVO: utils/geo.js 
-   ESTADO: DETECTOR DE PAÍS JGLM
+   ESTADO: DETECTOR DE PAÍS MEJORADO
 */
 export function detectarPais() {
     const lang = navigator.language.toLowerCase();
-    if (lang.includes("es-ve")) return "VE";
-    if (lang.includes("pt-br")) return "BR";
+    
+    if (lang.includes("pt")) return "BR"; // Brasil
+    if (lang.includes("es")) return "VE"; // Venezuela / Latam
+    
     return "GLOBAL";
 }
