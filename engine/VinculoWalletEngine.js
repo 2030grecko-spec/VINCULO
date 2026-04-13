@@ -1,47 +1,53 @@
 /* ARCHIVO: engine/VinculoWalletEngine.js 
-   ESTADO: ECONOMÍA JGLM CON COMISIÓN DEL 20% PARA EL DUEÑO
+   ESTADO: SISTEMA ECONÓMICO UNIFICADO JGLM - NIVEL 10
 */
 import { CamilaShow } from './CamilaShowEngine.js';
 
 export const VinculoWallet = {
     saldo: 0,
     monedaNombre: "V-Coin",
-    comisionPlataforma: 0.20, // 🎯 Tu 20% de cada apoyo
+    comisionPlataforma: 0.20, // 🎯 Tu 20% sagrado
 
+    // 1. BIENVENIDA Y REGALO
     inicializarNuevoUsuario() {
         this.saldo = 10; 
         this.renderizarMonedero();
         setTimeout(() => {
-            CamilaShow.mostrarMensaje("¡Bienvenido al Vínculo! Aquí tienes 10 monedas de regalo.");
+            CamilaShow.mostrarMensaje("¡Bienvenido! Tienes 10 V-Coins de regalo para apoyar talento.");
         }, 2000);
     },
 
-    recargar(cantidad) {
-        this.saldo += cantidad;
+    // 2. RECARGA POR PAGO REAL ($1 = 10 Monedas)
+    recargarPorPago(montoDolares) {
+        const monedas = montoDolares * 10;
+        this.saldo += monedas;
         this.renderizarMonedero();
+        CamilaShow.mostrarMensaje(`¡Recarga exitosa! +${monedas} ${this.monedaNombre} en tu cuenta.`);
     },
 
-    // LÓGICA DE APOYO CON COMISIÓN
+    // 3. ENVÍO DE APOYO CON COMISIÓN AUTOMÁTICA
     enviarPremio(cantidad) {
         if (this.saldo >= cantidad) {
-            this.saldo -= cantidad; // Se le quita el total al que envía
+            this.saldo -= cantidad;
 
-            // CÁLCULO DE REPARTO
-            const gananciaGreco = cantidad * this.comisionPlataforma; // El 20% para ti
-            const pagoCreador = cantidad - gananciaGreco; // El 80% para el creador
+            // Lógica de Negocio: 20% para Greco, 80% para Creador
+            const gananciaPlataforma = cantidad * this.comisionPlataforma;
+            const pagoNetoCreador = cantidad - gananciaPlataforma;
 
-            console.log(`TRANSACCIÓN JGLM:`);
-            console.log(`- Total enviado: ${cantidad}`);
-            console.log(`- Comisión Greco (20%): ${gananciaGreco}`);
-            console.log(`- Neto para Creador (80%): ${pagoCreador}`);
+            // Simulación de recepción (Para el futuro Backend)
+            window.saldoTotalPlataforma = (window.saldoTotalPlataforma || 0) + gananciaPlataforma;
+            console.log(`LOG JGLM: Comisión retenida: ${gananciaPlataforma}. Enviado al creador: ${pagoNetoCreador}`);
 
             this.renderizarMonedero();
+            CamilaShow.mostrarMensaje(`Has apoyado con ${cantidad} ${this.monedaNombre} 🔥`);
             return true;
         } else {
+            CamilaShow.mostrarMensaje("Saldo insuficiente para apoyar.");
             return false;
         }
     },
 
+    // 4. INTERFAZ VISUAL
     renderizarMonedero() {
         let el = document.getElementById("wallet-display");
         if (!el) {
